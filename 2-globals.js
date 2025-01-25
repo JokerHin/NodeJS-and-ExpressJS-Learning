@@ -12,3 +12,9 @@ setInterval(() => {
   console.log("hello world");
 }, 2000);
 // console log the 'hello world' every 2 seconds
+
+// Build-in Modules
+// OS (Operating System)
+// PATH (Path to the file)
+// FS (File System)
+// HTTP (Hypertext Transfer Protocol)
