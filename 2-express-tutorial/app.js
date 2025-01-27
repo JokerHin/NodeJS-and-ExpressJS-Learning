@@ -1,29 +1,21 @@
+// refer the 02 file and using express
 const express = require("express");
+const path = require("path");
+
 const app = express();
 
-// if the url is /, then the callback function will be executed
-// res.send = res.write + res.end
-app.get("/", (req, res) => {
-  console.log("user hit the resource");
-  res.status(200).send("Home page");
-});
+//serves files (e.g., images, CSS, JavaScript) directly from the “public” folder so users can access them through HTTP requests without additional routing.
+app.use(express.static("./public"));
 
-app.get("/about", (req, res) => {
-  res.status(200).send("About Page");
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./navbar-app/index.html"));
+  // It sends the specified “index.html” file as the HTTP response, making sure the file path is resolved correctly based on the server's environment.
 });
 
 app.all("*", (req, res) => {
-  res.status(404).send("<h1>resource not found</h1>");
+  res.status(404).send("resource not found");
 });
 
 app.listen(5000, () => {
-  console.log("server is listening on port 5000");
+  console.log("server is listening on port 5000....");
 });
-
-// app.get
-// app.post
-// app.put
-// app.delete
-// app.all
-// app.use
-// app.listen
