@@ -1,23 +1,12 @@
-// refer the 02 file and using express
+// set the json middleware and send json data
 const express = require("express");
-const path = require("path");
-
 const app = express();
+const { products } = require("./data");
 
-//serves files (e.g., images, CSS, JavaScript) directly from the “public” folder so users can access them through HTTP requests without additional routing.
-app.use(express.static("./public"));
-
-// app.get("/", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "./navbar-app/index.html"));
-//  // It sends the specified “index.html” file as the HTTP response, making sure the file path is resolved correctly based on the server's environment.
-//  adding to static assets
-//  SSR
-// });
-
-app.all("*", (req, res) => {
-  res.status(404).send("resource not found");
+app.get("/", (req, res) => {
+  res.json(products);
 });
 
-app.listen(5000, () => {
-  console.log("server is listening on port 5000....");
+app.listen(5000, (req, res) => {
+  console.log("Server is listening on port 5000");
 });
