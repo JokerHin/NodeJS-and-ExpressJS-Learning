@@ -1,3 +1,4 @@
+// use node to create a simple server without express
 const http = require("http");
 
 const server = http.createServer((req, res) => {
