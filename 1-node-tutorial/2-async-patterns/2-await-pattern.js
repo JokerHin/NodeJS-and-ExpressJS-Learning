@@ -1,5 +1,7 @@
 const { readFile, writeFile } = require("fs");
 const util = require("util");
+// Its “promisify” method transforms callback-based functions into Promise-based ones.
+// This allows the use of async/await syntax for cleaner, more readable asynchronous code.
 const readFilePromise = util.promisify(readFile);
 const writeFilePromise = util.promisify(writeFile);
 
